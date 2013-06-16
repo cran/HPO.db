@@ -10,8 +10,7 @@ HPO_DB_AnnDbBimap_seeds <- list(
             ),
             list(
                 tablename="hpo_parents",
-                Lcolname="_id",
-              #  tagname=c(RelationshipType="{relationship_type}"), #not very clear here
+                Lcolname="_id",         
                 Rcolname="_parent_id"
             ),
             list(
@@ -46,9 +45,7 @@ HPO_DB_AnnDbBimap_seeds <- list(
    
     list(
         objName="TERM",
-        #Class="GOTermsAnnDbBimap",
-       	#Class="AnnDbBimap",
-       	Class="HPOTermsAnnDbBimap",
+        Class="HPOTermsAnnDbBimap",
         L2Rchain=list(
             list(
                 tablename="hpo_term",
@@ -67,9 +64,7 @@ HPO_DB_AnnDbBimap_seeds <- list(
     ),
     list(
         objName="OBSOLETE",
-        #Class="GOTermsAnnDbBimap",
-        #Class="AnnDbBimap",
-       	Class="HPOTermsAnnDbBimap",
+        Class="HPOTermsAnnDbBimap",
         L2Rchain=list(
             list(
                 tablename="hpo_obsolete",
@@ -93,9 +88,7 @@ HPO_DB_AnnDbBimap_seeds <- list(
     ),
     list(
         objName="SYNONYM",
-        #Class="GOTermsAnnDbBimap",
-        #Class="AnnDbBimap",
-       	Class="HPOTermsAnnDbBimap",
+        Class="HPOTermsAnnDbBimap",
         L2Rchain=list(
             list(
                 tablename="hpo_synonym",
@@ -150,7 +143,6 @@ createAnnObjs.HPO_DB <- function(prefix, objTarget, dbconn, datacache)
     ann_objs$OFFSPRING <- revmap2("ANCESTOR", "OFFSPRING")
 
     ## 1 special map that is not an AnnDbBimap object (just a named integer vector)
-    #ann_objs$MAPCOUNTS <- createMAPCOUNTS(dbconn, prefix)
     ann_objs$MAPCOUNTS <- AnnotationDbi:::createMAPCOUNTS(dbconn, prefix)
 
     #prefixAnnObjNames(ann_objs, prefix)	

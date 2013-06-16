@@ -9,7 +9,6 @@ setClass("HPOTerms",
 )
 
 ### The mono-valued slots are also the mandatory slots.
-#.HPONODE_MONOVALUED_SLOTS <- c("HP", "Term", "Ontology", "Definition")
 .HPONODE_MONOVALUED_SLOTS <- c("HP", "Term")
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,8 +52,7 @@ HPOTerms <- function(HPOId, term,  synonym = "", secondary = ""
 
 
 ### - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-### The "HP", "Term", "Ontology", "Definition", "Synonym" and "Secondary" 
-### generics (accessor methods).
+### The "HP", "Term", "Ontology", "Definition", "Synonym" and "Secondary" generics (accessor methods).
 ###
 
 setGeneric("HP", function(object) standardGeneric("HP")) 
@@ -101,13 +99,6 @@ setMethod("HP", "character",function(object) .HPOid2go_termField(object,"hpo_id"
 
 setMethod("Term", "HPOTermsAnnDbBimap",function(object) .HPOid2go_termField(keys(object),"term") )
 setMethod("Term", "character",function(object) .HPOid2go_termField(object,"term") )
-
-#setMethod("Ontology", "HPOTermsAnnDbBimap",function(object) .HPOid2go_termField(keys(object),"ontology") )
-#setMethod("Ontology", "character",function(object) .HPOid2go_termField(object,"ontology") )
-
-#setMethod("Definition", "HPOTermsAnnDbBimap",function(object) .HPOid2go_termField(keys(object),"definition") )
-#setMethod("Definition", "character",function(object) .HPOid2go_termField(object,"definition") )
-
 
 ##.HPOid2go_synonymField() retrieves ids of type field from go_synonym
 .HPOid2go_synonymField <- function(ids, field){
